@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Примеры на PHP/JS</title>
+    <style>
+        textarea {
+            min-width: 300px;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h1>1. GET-запрос</h1>
+    <button onclick="ex01_get()">Отправить GET-запрос без параметров</button>
+    <br/>
+    <label for="result_01">Здесь будет результат</label><br/>
+    <textarea id="result_01" rows="10" autocomplete="off"></textarea>
+</section>
+
+<section>
+    <h1>2. GET-запрос с параметром</h1>
+    <label for="query_02">Это будет передано в строке запроса (после <code>?</code>)</label>
+    <input type="text" id="query_02" value="filename=test.txt" /><br />
+    <button onclick="ex02_get()">Отправить GET-запрос с параметром</button>
+    <br/>
+    <label for="result_02">Здесь будет результат</label><br/>
+    <textarea id="result_02" rows="20" autocomplete="off"></textarea><br />
+    <i>P.S. Можно подставить вместо test.txt имя одного из PHP-файлов</i>
+</section>
+
+
+<script>
+    function ex01_get() {
+        fetch("ex01.php")
+            .then(r => r.text())
+            .then(t => result_01.value = t);
+    }
+
+    function ex02_get() {
+        fetch("ex02.php?" + query_02.value)
+            .then(r => r.text())
+            .then(t => result_02.value = t);
+    }
+</script>
+</body>
+</html>
