@@ -28,6 +28,16 @@
     <i>P.S. Можно подставить вместо test.txt имя одного из PHP-файлов</i>
 </section>
 
+<section>
+    <h1>3. GET-запрос с математикой</h1>
+    <label for="query_03">Введите что-то:</label>
+    <input type="text" id="query_03" value="42" /><br />
+    <button onclick="ex03_get()">Вернуть сторицей</button>
+    <br/>
+    <label for="result_03">Здесь будет результат</label><br/>
+    <textarea id="result_03" rows="5" autocomplete="off"></textarea><br />
+</section>
+
 
 <script>
     function ex01_get() {
@@ -40,6 +50,12 @@
         fetch("ex02.php?" + query_02.value)
             .then(r => r.text())
             .then(t => result_02.value = t);
+    }
+
+    function ex03_get() {
+        fetch("ex03.php?num=" + query_03.value)
+            .then(r => r.text())
+            .then(t => result_03.value = t);
     }
 </script>
 </body>
